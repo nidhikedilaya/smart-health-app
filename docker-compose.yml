@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=mysql://user:password@db:3306/health_diagnosis
+      - ML_SERVICE_URL=http://ml-service:5000
+    depends_on:
+      - db
+      - ml-service
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=health_diagnosis
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
+  ml-service:
+    build:
+      context: ./ml-service
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./ml-service:/app
+    environment:
+      - MODEL_PATH=/app/models
+
+volumes:
+  mysql_data:

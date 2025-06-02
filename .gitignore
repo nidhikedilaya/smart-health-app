@@ -39,3 +39,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Docker
+.docker
+docker-compose.override.yml
+
+# ML Service
+ml-service/models/*.joblib
+ml-service/__pycache__/
+ml-service/*.pyc
+
+# Database
+mysql_data/
+*.sqlite
+*.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
