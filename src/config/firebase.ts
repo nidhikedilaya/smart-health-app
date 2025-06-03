@@ -4,13 +4,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCmtzcOI82QmYpKviEC2youCq6wsW0cLEY",
-  authDomain: "smart-health-app-ed293.firebaseapp.com",
-  projectId: "smart-health-app-ed293",
-  storageBucket: "smart-health-app-ed293.firebasestorage.app",
-  messagingSenderId: "347758124963",
-  appId: "1:347758124963:web:30e1b0bb6b129773974416",
-  measurementId: "G-60YC4F07LQ",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
